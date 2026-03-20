@@ -26,16 +26,17 @@ class GoHTTPClient:
             else:
                 return {"success": False, "error": f"HTTP {response.status_code}"}
 
-        except requests.exceptions.ConnectionError:
-            return {"success": False, "error": "Server not running on port 8081"}
         except Exception as e:
-            return {"success": False, "error": str(e)}
+            # Ловим любые исключения (ConnectionError, Timeout, etc.)
+            error_msg = str(e)
+            if "Connection refused" in error_msg or "connection" in error_msg.lower():
+                return {"success": False, "error": "Server not running on port 8081"}
+            return {"success": False, "error": error_msg}
 
 
 if __name__ == "__main__":
     client = GoHTTPClient()
 
-    # Тест с маленькими данными
     numbers = [1, 2, 3, 4, 5]
     print(f"Testing with: {numbers}")
     result = client.compute(numbers)
