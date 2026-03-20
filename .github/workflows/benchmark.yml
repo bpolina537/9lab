@@ -1,0 +1,56 @@
+name: Benchmarks
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0'  # Раз в неделю
+
+jobs:
+  benchmark:
+    name: Run Benchmarks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Install dependencies
+        run: |
+          pip install maturin requests matplotlib
+
+      - name: Build Rust module
+        run: |
+          cd rust-processor
+          maturin develop
+          cd ..
+
+      - name: Start Go HTTP server
+        run: |
+          cd go-http-service
+          go run main.go &
+          sleep 2
+          cd ..
+
+      - name: Run benchmarks
+        run: |
+          cd benchmarks
+          python benchmark.py
+
+      - name: Upload benchmark results
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-results
+          path: benchmarks/
