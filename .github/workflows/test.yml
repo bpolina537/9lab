@@ -55,21 +55,31 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
       - name: Install dependencies
         run: |
-          pip install pytest requests
+          pip install pytest requests maturin
 
-      - name: Build Rust module
+      - name: Build Rust module as wheel
         run: |
-          pip install maturin
           cd rust-processor
-          maturin develop
+          maturin build --release
+          cd ..
+
+      - name: Install Rust module
+        run: |
+          cd rust-processor
+          pip install target/wheels/*.whl
           cd ..
 
       - name: Run Python tests
         run: |
           cd python-client
-          pytest tests/ -v
+          python -m pytest tests/ -v
 
   test-all:
     name: All Tests
