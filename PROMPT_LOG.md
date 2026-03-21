@@ -325,20 +325,25 @@ CI/CD	1	21
 Полный список коммитов
 
 Хеш	Сообщение
-fca499c	chore: add gitignore and remove .venv from tracking
-673c8c9	feat: complete task 3 - go binary with subprocess
-f08196e	chore: remove .idea from repository
-993f422	feat: add go tcp server and python tcp client (task 5)
-d8f3d3a	feat: add rust DataProcessor with PyO3 (task 10)
-ee6cec0	chore: update gitignore for rust
-4c9aff9	chore: remove Cargo.lock from repository
-8b2213c	feat: add go http microservice and python http client (task 1)
-d39fe04	feat: add orchestrator combining go and rust (task 4)
-e66e55e	test: add rust unit tests (12 tests)
-769fb22	test: fix go tests - simplify multiple messages test
-147189e	fix: add Tcl/Tk path and use Agg backend for plotting
-20a8b31	ci: add GitHub Actions workflows for tests, publish, and benchmarks
-3a043dc	ci: add complete CI/CD pipelines
-8656158	ci: fix Python tests - use maturin build instead of develop
-610a118	chore: remove .idea from repository
+f3e4caf docs: add PROMPT_LOG.md
+9a97dd9 docs: add PROMPT_LOG.md
+bb46cfa docs: add PROMPT_LOG.md
+783e77a docs: add PROMPT_LOG.md
 b32f1b3 docs: add PROMPT_LOG.md
+610a118 chore: remove .idea from repository
+8656158 ci: fix Python tests - use maturin build instead of develop
+3a043dc ci: add complete CI/CD pipelines
+20a8b31 ci: add GitHub Actions workflows for tests, publish, and benchmarks
+147189e fix: add Tcl/Tk path and use Agg backend for plotting
+769fb22 test: fix go tests - simplify multiple messages test
+e66e55e test: add rust unit tests (12 tests)
+d39fe04 feat: add orchestrator combining go and rust (task 4)
+8b2213c feat: add go http microservice and python http client (task 1)
+4c9aff9 chore: remove Cargo.lock from repository
+ee6cec0 chore: update gitignore for rust
+d8f3d3a feat: add rust DataProcessor with PyO3 (task 10)
+993f422 feat: add go tcp server and python tcp client (task 5)
+f08196e chore: remove .idea from repository
+673c8c9 feat: complete task 3 - go binary with subprocess
+fca499c chore: add gitignore and remove .venv from tracking
+
