@@ -342,13 +342,3 @@ e66e55e	test: add rust unit tests (12 tests)
 8656158	ci: fix Python tests - use maturin build instead of develop
 610a118	chore: remove .idea from repository
 b32f1b3 docs: add PROMPT_LOG.md
-
-
-
-Выполненные задания
-
-3 — Go бинарник + subprocess ✅
-5 — TCP-сервер + Python клиент ✅
-10 — Rust структура + PyO3 ✅
-1 — Go HTTP-микросервис ✅
-4 — Оркестратор ✅
